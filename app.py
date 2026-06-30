@@ -53,6 +53,10 @@ async def process_chat(payload: ChatPayload):
             status_code=500, 
             detail=f"Failed to communicate with local Ollama engine: {str(error)}"
         )
+    
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
 
 if __name__ == "__main__":
     import uvicorn
